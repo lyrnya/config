@@ -1,0 +1,6 @@
+{
+	"registry-mirrors": ["https://dockerhub.icu"],
+	"dns": ["8.8.8.8"],
+	"log-driver": "json-file",
+	"log-opts": {"max-size": "10m"}
+}
