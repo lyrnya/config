@@ -75,9 +75,6 @@
             <vendor_id state="on" value="123456789123"/>
             <frequencies state="on"/>
         </hyperv>
-        <kvm>
-            <hidden state="on"/>
-        </kvm>
         <vmport state="off"/>
         <smm state="on"/>
         <ioapic driver="kvm"/>
