@@ -1,6 +1,10 @@
 {
-	"registry-mirrors": ["https://dockerhub.icu"],
-	"dns": ["8.8.8.8"],
-	"log-driver": "json-file",
-	"log-opts": {"max-size": "10m"}
+        "registry-mirrors": ["https://dockerhub.icu"],
+        "dns": ["8.8.8.8"],
+        "log-driver": "json-file",
+        "log-opts": {"max-size": "10m"},
+        "ipv6": true,
+        "fixed-cidr-v6": "fd00::/80",
+        "ip6tables": true,
+	"experimental": true
 }
