@@ -1,0 +1,19 @@
+# 大陆白名单模式
+default: proxy
+
+# Microsoft
+domain(domain: onedrive.com)->direct
+domain(domain: live.com)->direct
+domain(domain: mesh.com)->direct
+domain(domain: sfx.ms)->direct
+domain(domain: microsoft.com)->direct
+domain(domain: office.com)->direct
+domain(domain: fabric.io)->direct
+domain(domain: sharepoint.com)->direct
+
+domain(geosite:geolocation-!cn, geosite:google)->proxy
+domain(geosite:google-scholar)->proxy
+domain(geosite:category-scholar-!cn, geosite:category-scholar-cn)->direct
+domain(geosite:cn)->direct
+ip(geoip:hk,geoip:mo)->proxy
+ip(geoip:private, geoip:cn)->direct
