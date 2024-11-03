@@ -1,0 +1,439 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "googledns",
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "proxy"
+      },
+      {
+        "tag": "alidns",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "blockdns",
+        "address": "rcode://refused"
+      }
+    ],
+    "rules": [
+      {
+        "rule_set": "geosite-category-ads-all",
+        "server": "blockdns"
+      },
+      {
+        "rule_set": "AWAvenue-Ads-Rule",
+        "server": "blockdns"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "alidns"
+      },
+      {
+        "outbound": "any",
+        "server": "alidns"
+      }
+    ],
+    "final": "googledns"
+  },
+  "ntp": {
+    "interval": "30m0s",
+    "server": "time.apple.com",
+    "server_port": 123
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "mtu": 9000,
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv4"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "selector",
+      "tag": "Select",
+      "outbounds": [
+        "Auto_US",
+        "Auto_HK",
+        "CF_US1",
+        "CF_US2",
+        "CF_US3",
+        "CF_US4",
+        "CF_US5",
+        "CF_US6",
+        "CF_HK1",
+        "CF_HK2",
+        "CF_HK3",
+        "Direct"
+      ]
+    },
+    {
+      "type": "urltest",
+      "tag": "Auto_US",
+      "outbounds": [
+        "CF_US1",
+        "CF_US2",
+        "CF_US3",
+        "CF_US4",
+        "CF_US5",
+        "CF_US6"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30s",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "Auto_HK",
+      "outbounds": [
+        "CF_HK1",
+        "CF_HK2",
+        "CF_HK3"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30s",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "Direct",
+      "outbounds": [
+        "direct"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30s",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "proxy",
+      "outbounds": [
+        "Select"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30s",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "vless",
+      "tag": "CF_US1",
+      "server": "usa.visa.com",
+      "server_port": 443,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_US2",
+      "server": "myanmar.visa.com",
+      "server_port": 8443,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_US3",
+      "server": "www.visa.com.tw",
+      "server_port": 2053,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_US4",
+      "server": "www.visaeurope.ch",
+      "server_port": 2083,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_US5",
+      "server": "www.visa.com.br",
+      "server_port": 2087,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_US6",
+      "server": "www.visasoutheasteurope.com",
+      "server_port": 2096,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_HK1",
+      "server": "104.19.51.94",
+      "server_port": 443,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_HK2",
+      "server": "104.19.34.57",
+      "server_port": 443,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    },
+    {
+      "type": "vless",
+      "tag": "CF_HK3",
+      "server": "104.19.44.168",
+      "server_port": 443,
+      "uuid": "用户",
+      "tls": {
+        "enabled": true,
+        "server_name": "域名",
+        "utls": {
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/?ed=2560",
+        "headers": {
+          "Host": "域名"
+        }
+      },
+      "packet_encoding": "packetaddr"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "proxy"
+      },
+      {
+        "domain": [
+          "api.bilibili.com",
+          "long.wechat.com",
+          "short.wechat.com",
+          "short.weixin.qq.com",
+          "long.weixin.qq.com"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "rule_set": "AWAvenue-Ads-Rule",
+        "outbound": "block"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "outbound": "block"
+      },
+      {
+        "domain": [
+          "api.bilibili.com",
+          "long.wechat.com",
+          "short.wechat.com",
+          "short.weixin.qq.com",
+          "long.weixin.qq.com"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-category-ads-all",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "AWAvenue-Ads-Rule",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Singbox.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs"
+      }
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db"
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "default_mode": "Rule"
+    }
+  }
+}
