@@ -3,5 +3,5 @@
         "log-driver": "json-file",
         "log-opts": {"max-size": "10m"},
         "ipv6": true,
-        "fixed-cidr-v6": "fd00::/64"
+        "fixed-cidr-v6": "fd00::/80"
 }
