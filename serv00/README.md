@@ -11,16 +11,16 @@ alias acme.sh=~/.acme.sh/acme.sh
 acme.sh --upgrade --auto-upgrade
 
 测试（自己替换）
-acme.sh --issue --server letsencrypt --test -d cdn.主域名.xyz -w /home/用户名/domains/cdn.主域名.xyz/public_html --keylength ec-256
+acme.sh --issue --server letsencrypt --test -d 域名 -w /home/用户名/domains/域名/public_html --keylength ec-256
 
 设置正式环境
 acme.sh --set-default-ca --server letsencrypt
 
 生成 SSL（自己替换）
-acme.sh --issue -d cdn.主域名.xyz -w /home/用户名/domains/cdn.主域名.xyz/public_html --keylength ec-256 --force
+acme.sh --issue -d 域名 -w /home/用户名/domains/域名/public_html --keylength ec-256 --force
 
 安装 SSL，例如在 /home/用户名/domains/xray/ssl 建好文件夹
-acme.sh --installcert -d  cdn.主域名.xyz --cert-file /home/用户名/domains/xray/ssl/cert-cdn42.crt --key-file /home/用户名/domains/xray/ssl/cert-cdn42.key --fullchain-file /home/用户名/domains/xray/ssl/fullchain-cdn42.crt --ecc
+acme.sh --installcert -d  域名 --cert-file /home/用户名/domains/xray/ssl/cert-cdn42.crt --key-file /home/用户名/domains/xray/ssl/cert-cdn42.key --fullchain-file /home/用户名/domains/xray/ssl/fullchain-cdn42.crt --ecc
 
 至此，SSL 生成完毕，记录 `.crt` 和 `.key` 文件路径，待会在 Xray 里面配置。
 ```
