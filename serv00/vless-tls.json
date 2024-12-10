@@ -23,7 +23,7 @@
     },
     "inbounds": [
         {
-            "port": example,
+            "port": 10260,
             "protocol": "vless",
             "settings": {
                 "clients": [
@@ -36,7 +36,6 @@
             "streamSettings": {
                 "network": "ws",
                 "security": "tls",
-                "serverName": "domain.example",
                 "tlsSettings": {
                     "alpn": [
                         "http/1.1"
