@@ -1,0 +1,178 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "burstObservatory": {
+        "subjectSelector": [
+            "out1",
+            "out2",
+            "out3",
+            "out4"
+        ],
+        "pingConfig": {
+            "destination": "https://gstatic.com/generate_204",
+            "interval": "10s",
+            "connectivity": "",
+            "timeout": "30s",
+            "sampling": 2
+        }
+    },
+    "routing": {
+        "rules": [
+            {
+                "inboundTag": [
+                    "in"
+                ],
+                "balancerTag": "leastLoad"
+            }
+        ],
+        "balancers": [
+            {
+                "selector": [
+                    "out"
+                ],
+                "strategy": {
+                    "type": "leastLoad"
+                },
+                "tag": "leastLoad"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "tag": "in",
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ]
+            },
+            "port": 10808,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "out1",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "104.18.16.179",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "uuid",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "xhttp",
+                "security": "tls",
+                "xhttpSettings": {
+                    "path": "/",
+                    "host": "domain"
+                },
+                "tlsSettings": {
+                    "serverName": "domain"
+                }
+            }
+        },
+        {
+            "tag": "out2",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "104.18.16.179",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "uuid",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "xhttp",
+                "security": "tls",
+                "xhttpSettings": {
+                    "path": "/",
+                    "host": "domain"
+                },
+                "tlsSettings": {
+                    "serverName": "domain"
+                }
+            }
+        },
+        {
+            "tag": "out3",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "www.visa.com",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "uuid",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "xhttp",
+                "security": "tls",
+                "xhttpSettings": {
+                    "path": "/",
+                    "host": "domain"
+                },
+                "tlsSettings": {
+                    "serverName": "domain"
+                }
+            }
+        },
+        {
+            "tag": "out4",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "104.19.182.51",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "id": "uuid",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "xhttp",
+                "security": "tls",
+                "xhttpSettings": {
+                    "path": "/",
+                    "host": "domain"
+                },
+                "tlsSettings": {
+                    "serverName": "domain"
+                }
+            }
+        }
+    ]
+}
