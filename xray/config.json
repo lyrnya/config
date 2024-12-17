@@ -4,17 +4,15 @@
     },
     "burstObservatory": {
         "subjectSelector": [
-            "out1",
-            "out2",
-            "out3",
-            "out4"
+            "XHTTP_V1",
+            "XHTTP_V2"
         ],
         "pingConfig": {
             "destination": "https://gstatic.com/generate_204",
             "interval": "10s",
             "connectivity": "",
             "timeout": "30s",
-            "sampling": 2
+            "sampling": 1
         }
     },
     "routing": {
@@ -40,7 +38,6 @@
     },
     "inbounds": [
         {
-            "tag": "in",
             "sniffing": {
                 "enabled": true,
                 "destOverride": [
@@ -59,7 +56,7 @@
     ],
     "outbounds": [
         {
-            "tag": "out1",
+            "tag": "XHTTP_V1",
             "protocol": "vless",
             "settings": {
                 "vnext": [
@@ -88,71 +85,13 @@
             }
         },
         {
-            "tag": "out2",
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "104.18.16.179",
-                        "port": 443,
-                        "users": [
-                            {
-                                "id": "uuid",
-                                "encryption": "none"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "xhttp",
-                "security": "tls",
-                "xhttpSettings": {
-                    "path": "/",
-                    "host": "domain"
-                },
-                "tlsSettings": {
-                    "serverName": "domain"
-                }
-            }
-        },
-        {
-            "tag": "out3",
-            "protocol": "vless",
-            "settings": {
-                "vnext": [
-                    {
-                        "address": "www.visa.com",
-                        "port": 443,
-                        "users": [
-                            {
-                                "id": "uuid",
-                                "encryption": "none"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "xhttp",
-                "security": "tls",
-                "xhttpSettings": {
-                    "path": "/",
-                    "host": "domain"
-                },
-                "tlsSettings": {
-                    "serverName": "domain"
-                }
-            }
-        },
-        {
-            "tag": "out4",
+            "tag": "XHTTP_V2",
             "protocol": "vless",
             "settings": {
                 "vnext": [
                     {
                         "address": "104.19.182.51",
-                        "port": 8443,
+                        "port": 443,
                         "users": [
                             {
                                 "id": "uuid",
