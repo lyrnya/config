@@ -17,6 +17,31 @@
                     "geoip:private"
                 ],
                 "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "long.weixin.qq.com",
+                    "short.weixin.qq.com",
+                    "szshort.weixin.qq.com",
+                    "dns.weixin.qq.com",
+                    "dns.weixin.qq.com.cn"
+                ],
+                "outboundTag": "direct"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "geosite:cn"
+                ],
+                "outboundTag": "warp"
+            },
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:cn"
+                ],
+                "outboundTag": "warp"
             }
         ]
     },
@@ -71,6 +96,19 @@
         {
             "tag": "block",
             "protocol": "blackhole"
+        },
+        {
+            "tag": "warp",
+            "protocol": "wireguard",
+            "settings": {
+                "secretKey": "privkey",
+                "peers": [
+                    {
+                        "publicKey": "pubkey",
+                        "endpoint": "engage.cloudflareclient.com:2408"
+                    }
+                ]
+            }
         }
     ]
 }
