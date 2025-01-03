@@ -1,0 +1,141 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "dns": {
+        "servers": [
+            "https+local://1.1.1.1/dns-query",
+            "localhost"
+        ]
+    },
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:private"
+                ],
+                "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "protocol": [
+                    "bittorrent"
+                ],
+                "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "geosite:cn"
+                ],
+                "outboundTag": "warp"
+            },
+            {
+                "type": "field",
+                "ip": [
+                    "geoip:cn"
+                ],
+                "outboundTag": "warp"
+            }
+        ]
+    },
+    "inbounds": [
+        {
+            "listen": "127.0.0.1", //只监听本机
+            "port": 5443, //VLESS Vision REALITY 监听端口
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "uuid",
+                        "flow": "xtls-rprx-vision"
+                    }
+                ],
+                "decryption": "none",
+                "fallbacks": [
+                    {
+                        "dest": 2023 //回落给 VLESS XHTTP 监听端口
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "raw",
+                "security": "reality",
+                "realitySettings": {
+                    "target": 8443, //转发给自己的网站监听端口
+                    "xver": 1, //开启 PROXY protocol 发送，发送真实来源IP和端口给自己的网站
+                    "serverNames": [
+                        "reality.domain.com" //对应 VLESS Vision REALITY 的域名
+                    ],
+                    "privateKey": "privkey",
+                    "shortIds": [
+                        ""
+                    ]
+                },
+                "rawSettings": {
+                    "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ]
+            }
+        },
+        {
+            "listen": "127.0.0.1", //只监听本机
+            "port": 2023, //VLESS XHTTP 监听端口
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "uuid"
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "xhttp",
+                "xhttpSettings": {
+                    "path": "/xhttp" //修改路径
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls",
+                    "quic"
+                ]
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "direct",
+            "protocol": "freedom"
+        },
+        {
+            "tag": "block",
+            "protocol": "blackhole"
+        },
+        {
+            "tag": "warp",
+            "protocol": "wireguard",
+            "settings": {
+                "secretKey": "privkey",
+                "peers": [
+                    {
+                        "publicKey": "pubKey",
+                        "endpoint": "162.159.192.1:2408"
+                    }
+                ]
+            }
+        }
+    ]
+}

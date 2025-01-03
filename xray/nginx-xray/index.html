@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to XXX</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+        }
+
+        /* 背景图片容器 */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: url('/image/pic.jpg');
+            /* 替换为你的图片路径 */
+            background-size: cover;
+            /* 确保图片填满整个屏幕 */
+            background-position: center;
+            /* 居中图片 */
+            background-repeat: no-repeat;
+            /* 防止图片重复 */
+        }
+
+        /* 半透明覆盖层 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            /* 黑色半透明 */
+            z-index: 2;
+        }
+
+        /* 文字容器 */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 3;
+            opacity: 0;
+            animation: fadeIn 3s ease-in-out forwards;
+        }
+
+        .content h1 {
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        .content p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        /* 淡入动画 */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .content h1 {
+                font-size: 2.5rem;
+            }
+
+            .content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 背景图片 -->
+    <div class="background"></div>
+
+    <!-- 半透明覆盖层 -->
+    <div class="overlay"></div>
+
+    <!-- 中心文字 -->
+    <div class="content">
+        <h1>Welcome to XXX</h1>
+        <p>Discover your own moment of peace</p>
+    </div>
+</body>
+
+</html>
