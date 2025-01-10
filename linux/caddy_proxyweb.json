@@ -1,0 +1,131 @@
+{
+    "admin": {
+        "disabled": true,
+        "config": {
+            "persist": false
+        }
+    },
+    "storage": {
+        "module": "file_system",
+        "root": "/home/tls"
+    },
+    "apps": {
+        "http": {
+            "servers": {
+                "example": {
+                    "listen": [
+                        ":8000"
+                    ],
+                    "routes": [
+                        {
+                            "match": [
+                                {
+                                    "host": [
+                                        "ray.domain.com"
+                                    ]
+                                }
+                            ],
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": "localhost:2017"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "match": [
+                                {
+                                    "host": [
+                                        "alist.domain.com"
+                                    ]
+                                }
+                            ],
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": "localhost:5244"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "match": [
+                                {
+                                    "host": [
+                                        "ql.domain.com"
+                                    ]
+                                }
+                            ],
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": "localhost:5700"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "match": [
+                                {
+                                    "host": [
+                                        "portainer.domain.com"
+                                    ]
+                                }
+                            ],
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": "localhost:9000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "tls": {
+            "certificates": {
+                "automate": [
+                    "alist.domain.com",
+                    "portainer.domain.com",
+                    "ql.domain.com",
+                    "ray.domain.com"
+                ]
+            },
+            "automation": {
+                "policies": [
+                    {
+                        "issuers": [
+                            {
+                                "module": "acme",
+                                "email": "example@domain.com",
+                                "challenges": {
+                                    "dns": {
+                                        "provider": {
+                                            "name": "cloudflare",
+                                            "api_token": "cf_token"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
