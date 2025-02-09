@@ -15,7 +15,7 @@
             {
                 "tag": "balancer",
                 "selector": [
-                    "Poland"
+                    "XHTTP"
                 ],
                 "strategy": {
                     "type": "leastPing"
@@ -44,12 +44,12 @@
     ],
     "outbounds": [
         {
-            "tag": "Poland_V1",
+            "tag": "XHTTP_V1",
             "protocol": "vless",
             "settings": {
                 "vnext": [
                     {
-                        "address": "cdn",
+                        "address": "104.18.16.179",
                         "port": 443,
                         "users": [
                             {
@@ -64,11 +64,11 @@
                 "network": "xhttp",
                 "security": "tls",
                 "xhttpSettings": {
-                    "path": "/",
-                    "host": "domain"
+                    "path": "/"
                 },
                 "tlsSettings": {
-                    "serverName": "domain"
+                    "serverName": "example.com",
+                    "fingerprint": "chrome"
                 },
                 "sockopt": {
                     "mark": 255
@@ -76,12 +76,12 @@
             }
         },
         {
-            "tag": "Poland_V2",
+            "tag": "XHTTP_V2",
             "protocol": "vless",
             "settings": {
                 "vnext": [
                     {
-                        "address": "cdn",
+                        "address": "104.19.182.51",
                         "port": 443,
                         "users": [
                             {
@@ -96,11 +96,11 @@
                 "network": "xhttp",
                 "security": "tls",
                 "xhttpSettings": {
-                    "path": "/",
-                    "host": "domain"
+                    "path": "/"
                 },
                 "tlsSettings": {
-                    "serverName": "domain"
+                    "serverName": "example.com",
+                    "fingerprint": "chrome"
                 },
                 "sockopt": {
                     "mark": 255
@@ -108,22 +108,73 @@
             }
         },
         {
-            "tag": "direct",
-            "protocol": "freedom",
+            "tag": "XHTTP_V3",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "162.159.80.223",
+                        "port": 8443,
+                        "users": [
+                            {
+                                "id": "uuid",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
             "streamSettings": {
+                "network": "xhttp",
+                "security": "tls",
+                "xhttpSettings": {
+                    "path": "/"
+                },
+                "tlsSettings": {
+                    "serverName": "example.com",
+                    "fingerprint": "chrome"
+                },
                 "sockopt": {
                     "mark": 255
                 }
             }
         },
         {
-            "tag": "block",
-            "protocol": "blackhole"
+            "tag": "XHTTP_V4",
+            "protocol": "vless",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "2606:4700::",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "uuid",
+                                "encryption": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "xhttp",
+                "security": "tls",
+                "xhttpSettings": {
+                    "path": "/"
+                },
+                "tlsSettings": {
+                    "serverName": "example.com",
+                    "fingerprint": "chrome"
+                },
+                "sockopt": {
+                    "mark": 255
+                }
+            }
         }
     ],
     "observatory": {
         "subjectSelector": [
-            "Poland"
+            "XHTTP"
         ],
         "probeUrl": "https://gstatic.com/generate_204",
         "probeInterval": "30s",

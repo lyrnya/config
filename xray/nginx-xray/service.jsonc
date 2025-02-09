@@ -5,6 +5,22 @@
     "dns": {
         "servers": [
             "https+local://1.1.1.1/dns-query",
+            {
+                "address": "154.12.177.22", //Alice Networks DNS HK&TW
+                "port": 53,
+                "domains": [
+                    "geosite:bilibili"
+                ],
+                "skipFallback": true
+            },
+            {
+                "address": "157.20.104.47", //Alice Networks DNS SG
+                "port": 53,
+                "domains": [
+                    "geosite:netflix"
+                ],
+                "skipFallback": true
+            },
             "localhost"
         ]
     },
@@ -15,6 +31,13 @@
                 "type": "field",
                 "ip": [
                     "geoip:private"
+                ],
+                "outboundTag": "block"
+            },
+            {
+                "type": "field",
+                "domain": [
+                    "geosite:category-ads-all"
                 ],
                 "outboundTag": "block"
             },
@@ -64,18 +87,18 @@
                 "network": "raw",
                 "security": "reality",
                 "realitySettings": {
-                    "target": 8443, //转发给自己的网站监听端口
+                    "target": 7443,
                     "xver": 1, //开启 PROXY protocol 发送，发送真实来源IP和端口给自己的网站
                     "serverNames": [
-                        "reality.domain.com" //对应 VLESS Vision REALITY 的域名
+                        "reality.domain.com"
                     ],
-                    "privateKey": "privkey",
+                    "privateKey": "privateKey",
                     "shortIds": [
                         ""
                     ]
                 },
                 "rawSettings": {
-                    "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口
+                    "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口
                 }
             },
             "sniffing": {
@@ -128,10 +151,10 @@
             "tag": "warp",
             "protocol": "wireguard",
             "settings": {
-                "secretKey": "privkey",
+                "secretKey": "secretKey",
                 "peers": [
                     {
-                        "publicKey": "pubKey",
+                        "publicKey": "publicKey",
                         "endpoint": "162.159.192.1:2408"
                     }
                 ]
