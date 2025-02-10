@@ -88,9 +88,9 @@
                 "security": "reality",
                 "realitySettings": {
                     "target": 7443,
-                    "xver": 1, //开启 PROXY protocol 发送，发送真实来源IP和端口给自己的网站
+                    "xver": 2, //开启 PROXY protocol 发送，发送真实来源IP和端口给自己的网站
                     "serverNames": [
-                        "reality.domain.com"
+                        "reality.example.com"
                     ],
                     "privateKey": "privateKey",
                     "shortIds": [
