@@ -190,7 +190,7 @@
                                         "set": {
                                             "Alt-Svc": [
                                                 "h3=\":443\"; ma=2592000"
-                                            ], //通告 HTTP/3 server 的可用性。（代理 UDP 443 端口才需要配置）
+                                            ], //通告 HTTP/3 server 的可用性（代理 UDP 443 端口才需要配置）
                                             "Strict-Transport-Security": [
                                                 "max-age=31536000; includeSubDomains; preload"
                                             ] //启用 HSTS
