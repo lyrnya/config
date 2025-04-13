@@ -13,7 +13,7 @@
   ```
   cd /usr/share/nbfc/configs
   curl -O https://raw.githubusercontent.com/lyrnya/config/refs/heads/main/linux/Laptop.json
-  nbfc config -s 'HP OMEN Laptop 16-b0xxx'
+  nbfc config -s 'Laptop'
   systemctl enable --now nbfc_service.service
   ```  
 
