@@ -20,8 +20,14 @@
         "clock#time"
     ],
     "custom/arch": {
-        "format": "  ",
-        "tooltip": false
+        "format": "",
+        "tooltip": false,
+        "on-click": "rofi -show drun"
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "on-click": "rofi -show window"
     },
     "battery": {
         "interval": 60,
