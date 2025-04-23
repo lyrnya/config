@@ -22,7 +22,8 @@
     "custom/arch": {
         "format": "",
         "tooltip": false,
-        "on-click": "rofi -show drun"
+        "on-click": "rofi -show drun",
+        "on-click-right": "wlogout"
     },
     "hyprland/window": {
         "format": "{}",
