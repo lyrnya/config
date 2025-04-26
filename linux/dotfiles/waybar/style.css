@@ -52,7 +52,7 @@
 #waybar {
     color: @text;
     background: @base;
-    font-family: FiraCode Nerd Font, Cantarell, Noto Sans, sans-serif;
+    font-family: Noto Sans, sans-serif;
     font-size: 13px;
 }
 
@@ -65,6 +65,7 @@
 #mode,
 #network,
 #pulseaudio,
+#idle_inhibitor,
 #temperature,
 #tray {
     padding-left: 10px;
@@ -155,10 +156,6 @@
     /* No styles */
 }
 
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
 #temperature {
     /* No styles */
 }
@@ -192,12 +189,6 @@ label {
     color: #666666;
 }
 
-#custom-arch {
-    margin-left: 10px;
-    margin-right: 10px;
-    color: #61afef;
-}
-
 #workspaces button.active {
     color: @subtext1;
     background-color: @mantle;
@@ -213,4 +204,16 @@ label {
 #workspaces button.urgent {
     border-color: #c9545d;
     color: #c9545d;
+}
+
+#custom-arch {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #61afef;
+}
+
+#custom-power {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #e78284;
 }

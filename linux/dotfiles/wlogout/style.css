@@ -5,10 +5,12 @@
 
 window {
 	background-color: rgba(48, 52, 70, 0.90);
+    min-width: 80px;     /* 最小宽度 */
+    min-height: 80px;    /* 最小高度 */
 }
 
 button {
-	border-radius: 0;
+    border-radius: 0;
 	border-color: #8caaee;
 	text-decoration-color: #c6d0f5;
 	color: #c6d0f5;
@@ -30,16 +32,8 @@ button:focus, button:active, button:hover {
     background-image: url("./icons/lock.svg");
 }
 
-#logout {
-    background-image: url("./icons/logout.svg");
-}
-
 #suspend {
     background-image: url("./icons/suspend.svg");
-}
-
-#hibernate {
-    background-image: url("./icons/hibernate.svg");
 }
 
 #shutdown {

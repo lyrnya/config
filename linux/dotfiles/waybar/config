@@ -10,25 +10,39 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "idle_inhibitor",
         "network",
-        "cpu",
-        "memory",
-        "temperature",
         "battery",
+        "pulseaudio",
         "tray",
-        "clock#date",
-        "clock#time"
+        "clock",
+        "custom/power"
     ],
     "custom/arch": {
         "format": "",
         "tooltip": false,
-        "on-click": "rofi -show drun",
-        "on-click-right": "wlogout"
+        "on-click": "rofi -show drun"
+    },
+    "hyprland/workspaces": {
+        "on-click": "activate"
     },
     "hyprland/window": {
         "format": "{}",
-        "max-length": 50,
         "on-click": "rofi -show window"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "network": {
+        "interval": 5,
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰌘 {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip": false
     },
     "battery": {
         "interval": 60,
@@ -37,7 +51,6 @@
             "critical": 15
         },
         "format": " {capacity}%",
-        "format-full": "",
         "format-discharging": "{icon} {capacity}%",
         "format-icons": [
             "",
@@ -48,57 +61,34 @@
         ],
         "tooltip": false
     },
-    "clock#date": {
-        "interval": 60,
-        "format": "{:%e %b}",
-        "tooltip-format": "{:%e %B %Y}"
-    },
-    "clock#time": {
-        "interval": 1,
-        "format": "{:%H:%M}",
-        "tooltip": false
-    },
-    "cpu": {
-        "interval": 5,
-        "format": "CPU {usage}%",
-        "states": {
-            "warning": 70,
-            "critical": 90
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "mate-volume-control",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "format-icons": {
+            "headphone": "󱡒",
+            "hands-free": "󱡒",
+            "headset": "󱡒",
+            "default": [
+                "",
+                ""
+            ]
         }
-    },
-    "memory": {
-        "interval": 5,
-        "format": "MEM {}%",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        }
-    },
-    "network": {
-        "interval": 5,
-        "format-wifi": " ",
-        "format-ethernet": "󰌘 ",
-        "format-disconnected": "⚠ ",
-        "tooltip": false
-    },
-    "hyprland/workspaces": {
-        "on-click": "activate"
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "interval": 5,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "tooltip": true
     },
     "tray": {
         "icon-size": 14,
         "spacing": 10
+    },
+    "clock": {
+        "format": "{:%e %b %H:%M}",
+        "tooltip-format": "{:%A %B %d %Y}"
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "wlogout -b 2 -c 2 -L 500 -R 500"
     }
 }
