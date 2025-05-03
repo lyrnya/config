@@ -5,22 +5,6 @@
     "dns": {
         "servers": [
             "https+local://1.1.1.1/dns-query",
-            {
-                "address": "154.12.177.22", //Alice Networks DNS HK&TW
-                "port": 53,
-                "domains": [
-                    "geosite:bilibili"
-                ],
-                "skipFallback": true
-            },
-            {
-                "address": "157.20.104.47", //Alice Networks DNS SG
-                "port": 53,
-                "domains": [
-                    "geosite:netflix"
-                ],
-                "skipFallback": true
-            },
             "localhost"
         ]
     },
@@ -36,13 +20,6 @@
             },
             {
                 "type": "field",
-                "domain": [
-                    "geosite:category-ads-all"
-                ],
-                "outboundTag": "block"
-            },
-            {
-                "type": "field",
                 "protocol": [
                     "bittorrent"
                 ],
@@ -51,10 +28,9 @@
             {
                 "type": "field",
                 "domain": [
-                    "geosite:google-scholar",
-                    "geosite:xda"
+                    "geosite:category-ads-all"
                 ],
-                "outboundTag": "warp"
+                "outboundTag": "block"
             },
             {
                 "type": "field",
@@ -148,25 +124,17 @@
     ],
     "outbounds": [
         {
-            "tag": "direct",
-            "protocol": "freedom"
+            "tag": "warp",
+            "protocol": "freedom",
+            "streamSettings": {
+                "sockopt": {
+                    "interface": "warp"
+                }
+            }
         },
         {
             "tag": "block",
             "protocol": "blackhole"
-        },
-        {
-            "tag": "warp",
-            "protocol": "wireguard",
-            "settings": {
-                "secretKey": "secretKey",
-                "peers": [
-                    {
-                        "publicKey": "publicKey",
-                        "endpoint": "engage.cloudflareclient.com:2408"
-                    }
-                ]
-            }
         }
     ]
 }
