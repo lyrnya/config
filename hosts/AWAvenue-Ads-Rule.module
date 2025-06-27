@@ -1,16 +1,7 @@
-#Title: AWAvenue Ads Rule
-#--------------------------------------
-#Total lines: 846
-#Version: 1.6.5-release
-#Update time: 2025-06-11 16:53:46 UTC+8
-#Update content: add more wangmai ads block. #148
-
-#Homepage: https://github.com/TG-Twilight/AWAvenue-Ads-Rule
-#License: https://github.com/TG-Twilight/AWAvenue-Ads-Rule/blob/main/LICENSE
-
 #!name=AWAvenue Ads Rule
+#!homepage=https://github.com/TG-Twilight/AWAvenue-Ads-Rule
+#!desc=Rules:846
 [Rule]
-
 DOMAIN,1500020991.vodplayer.wxamedia.com
 DOMAIN,1500022744.vodplayer.wxamedia.com
 DOMAIN,1500026601.vodplayer.wxamedia.com
