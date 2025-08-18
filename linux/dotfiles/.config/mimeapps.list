@@ -1,0 +1,8 @@
+[Default Applications]
+text/plain=nano.desktop
+image/png=swayimg.desktop
+image/jpeg=swayimg.desktop
+image/jpg=swayimg.desktop
+image/gif=swayimg.desktop
+image/bmp=swayimg.desktop
+image/webp=swayimg.desktop

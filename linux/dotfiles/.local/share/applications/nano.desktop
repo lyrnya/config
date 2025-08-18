@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Nano Editor
+Comment=Edit text files with nano in kitty
+Exec=kitty nano %F
+Icon=accessories-text-editor
+Terminal=false
+Categories=Utility;TextEditor;
+MimeType=text/plain;
