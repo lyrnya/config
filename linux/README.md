@@ -12,3 +12,5 @@ curl -O https://raw.githubusercontent.com/lyrnya/config/refs/heads/main/linux/La
 nbfc config -s 'Laptop'
 systemctl enable --now nbfc_service.service
 ```  
+
+1
