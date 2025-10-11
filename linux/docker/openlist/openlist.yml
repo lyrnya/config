@@ -1,0 +1,14 @@
+services:
+  openlist:
+    ports:
+      - '5244:5244'
+    network_mode: bridge
+    image: 'openlistteam/openlist:latest'
+    container_name: openlist
+    user: '1000:1000'
+    volumes:
+      - '/etc/openlist:/opt/openlist/data'
+    environment:
+      - UMASK=022
+      - TZ=Asia/Shanghai
+    restart: unless-stopped

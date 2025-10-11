@@ -1,0 +1,31 @@
+services:
+  aria2:
+    ports:
+      - 6800:6800
+      - 8080:8080      
+    image: superng6/aria2:a2b-latest
+    container_name: aria2
+    network_mode: bridge
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - SECRET=token
+      - CACHE=512M
+      - PORT=6800
+      - WEBUI=true
+      - WEBUI_PORT=8080
+      - BTPORT=32516
+      - UT=true
+      - QUIET=true
+      - SMD=true
+      - A2B=true
+      - A2B_DISABLE_LOG=false
+      - CRA2B=2h
+    volumes:
+      - /pwd/Downloads/aria2/config:/config
+      - /pwd/Downloads/aria2/downloads:/downloads
+      - /lib/modules:/lib/modules
+    restart: unless-stopped   
