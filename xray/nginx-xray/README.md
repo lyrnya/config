@@ -9,11 +9,3 @@ export CF_Token="CF_Token"
 mkdir ~/tls/
 .acme.sh/acme.sh --installcert -d 'example.com' --cert-file ~/tls/cert.crt --key-file ~/tls/cert.key --fullchain-file ~/tls/fullchain.crt --ecc
 ```
-
-```
-# VLESS Vision REALITY
-  reality.example.com
-
-# VLESS XHTTP TLS
-  xhttp.example.com
-```

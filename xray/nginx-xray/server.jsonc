@@ -101,10 +101,11 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "uuid"
+                        "id": "uuid",
+                        "flow": "xtls-rprx-vision"
                     }
                 ],
-                "decryption": "none"
+                "decryption": "decryption"
             },
             "streamSettings": {
                 "network": "xhttp",
@@ -123,6 +124,10 @@
         }
     ],
     "outbounds": [
+        {
+            "tag": "direct",
+            "protocol": "freedom"
+        },
         {
             "tag": "warp",
             "protocol": "freedom",
