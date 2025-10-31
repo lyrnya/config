@@ -69,7 +69,7 @@
         <FanLevelUseEc>false</FanLevelUseEc>
         <!-- Default fan program, which might be loaded on startup
              (depending on the Autoconfig setting) -->
-        <FanProgramDefault>Power</FanProgramDefault>
+        <FanProgramDefault>Auto</FanProgramDefault>
         <!-- Default alternate fan program to switch to
              if no longer on AC power (i.e. on battery) -->
         <FanProgramDefaultAlt>Silent</FanProgramDefaultAlt>
