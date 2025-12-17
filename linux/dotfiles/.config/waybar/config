@@ -42,7 +42,8 @@
         "format-wifi": " {essid}",
         "format-ethernet": "󰌘 {ifname}",
         "format-disconnected": "⚠ Disconnected",
-        "tooltip-format": "{ipaddr}"
+        "tooltip-format": "{ipaddr}",
+        "on-click": "kitty nmtui"
     },
     "battery": {
         "interval": 60,
