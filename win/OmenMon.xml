@@ -69,7 +69,7 @@
         <FanLevelUseEc>false</FanLevelUseEc>
         <!-- Default fan program, which might be loaded on startup
              (depending on the Autoconfig setting) -->
-        <FanProgramDefault>Auto</FanProgramDefault>
+        <FanProgramDefault>Power</FanProgramDefault>
         <!-- Default alternate fan program to switch to
              if no longer on AC power (i.e. on battery) -->
         <FanProgramDefaultAlt>Silent</FanProgramDefaultAlt>
@@ -85,7 +85,7 @@
              Curve visualization: https://www.desmos.com/calculator/6vfpghtud0
                                   (editable initial data for the Power program) -->
         <FanPrograms>
-            <Program Name="Auto">
+            <Program Name="Power">
                 <FanMode>Default</FanMode>
                 <GpuPower>Minimum</GpuPower>
                 <Level Temperature="00">
@@ -127,6 +127,58 @@
                 <Level Temperature="95">
                     <Cpu>44</Cpu>
                     <Gpu>44</Gpu>
+                </Level>
+                <Level Temperature="100">
+                    <Cpu>49</Cpu>
+                    <Gpu>49</Gpu>
+                </Level>
+            </Program>
+            <Program Name="Silent">
+                <FanMode>Default</FanMode>
+                <GpuPower>Minimum</GpuPower>
+                <Level Temperature="00">
+                    <Cpu>15</Cpu>
+                    <Gpu>15</Gpu>
+                </Level>
+                <Level Temperature="55">
+                    <Cpu>17.5</Cpu>
+                    <Gpu>17.5</Gpu>
+                </Level>
+                <Level Temperature="60">
+                    <Cpu>20</Cpu>
+                    <Gpu>20</Gpu>
+                </Level>
+                <Level Temperature="65">
+                    <Cpu>22.5</Cpu>
+                    <Gpu>22.5</Gpu>
+                </Level>
+                <Level Temperature="70">
+                    <Cpu>25</Cpu>
+                    <Gpu>25</Gpu>
+                </Level>
+                <Level Temperature="75">
+                    <Cpu>27.5</Cpu>
+                    <Gpu>27.5</Gpu>
+                </Level>
+                <Level Temperature="80">
+                    <Cpu>30</Cpu>
+                    <Gpu>30</Gpu>
+                </Level>
+                <Level Temperature="85">
+                    <Cpu>33</Cpu>
+                    <Gpu>33</Gpu>
+                </Level>
+                <Level Temperature="90">
+                    <Cpu>38</Cpu>
+                    <Gpu>38</Gpu>
+                </Level>
+                <Level Temperature="95">
+                    <Cpu>44</Cpu>
+                    <Gpu>44</Gpu>
+                </Level>
+                <Level Temperature="100">
+                    <Cpu>49</Cpu>
+                    <Gpu>49</Gpu>
                 </Level>
             </Program>
         </FanPrograms>
