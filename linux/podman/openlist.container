@@ -1,0 +1,18 @@
+[Unit]
+Description=OpenList Service
+
+[Container]
+ContainerName=openlist
+Image=docker.io/openlistteam/openlist
+PublishPort=5244:5244
+Volume=/home/user/app/openlist:/opt/openlist/data
+User=0:0
+Environment=UMASK=022
+Environment=TZ=Asia/Shanghai
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+

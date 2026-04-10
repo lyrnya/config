@@ -1,0 +1,8 @@
+services:
+    aio-dynamic-push:
+        container_name: aio-dynamic-push
+        image: nfew/aio-dynamic-push:latest
+        network_mode: bridge
+        volumes:
+            - ./config.yml:/mnt/config.yml
+        restart: unless-stopped

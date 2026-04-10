@@ -1,0 +1,15 @@
+[Unit]
+Description=Random Picture API Service
+
+[Container]
+ContainerName=random-pic
+Image=docker.io/neixin/random-pic-api
+PublishPort=1234:80
+Volume=/home/user/pic/portrait:/var/www/html/portrait
+Volume=/home/user/pic/landscape:/var/www/html/landscape
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

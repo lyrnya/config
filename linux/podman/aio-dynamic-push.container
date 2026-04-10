@@ -1,0 +1,14 @@
+[Unit]
+Description=All-in-one Dynamic Push
+
+[Container]
+ContainerName=aio-dynamic-push
+Image=docker.io/nfew/aio-dynamic-push
+Volume=/home/user/app/aio-dynamic-push/config.yml:/mnt/config.yml
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+

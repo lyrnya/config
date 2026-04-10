@@ -25,13 +25,8 @@
             },
             {
                 "domain": [
-                    "geosite:category-ads-all"
-                ],
-                "outboundTag": "block"
-            },
-            {
-                "domain": [
-                    "domain:skk.moe"
+                    "geosite:category-ads-all",
+                    "domain:skk.moe" //sukka
                 ],
                 "outboundTag": "block"
             },
@@ -127,15 +122,20 @@
     ],
     "outbounds": [
         {
-            "tag": "direct",
-            "protocol": "freedom"
-        },
-        {
             "tag": "warp",
             "protocol": "freedom",
             "streamSettings": {
                 "sockopt": {
                     "interface": "warp"
+                }
+            }
+        },
+        {
+            "tag": "direct",
+            "protocol": "freedom",
+            "streamSettings": {
+                "sockopt": {
+                    "interface": "ens3"
                 }
             }
         },

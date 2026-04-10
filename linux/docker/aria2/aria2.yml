@@ -2,10 +2,16 @@ services:
     aria2:
         container_name: aria2
         image: superng6/aria2:a2b-latest
+        network_mode: bridge
         ports:
             - 6800:6800
             - 8080:8080
-        network_mode: bridge
+        volumes:
+            - /home/user/Downloads/aria2/config:/config
+            - /home/user/Downloads/aria2/downloads:/downloads
+            - /lib/modules:/lib/modules
+        cap_add:
+            - NET_ADMIN
         environment:
             - PUID=1000
             - PGID=1000
@@ -22,10 +28,4 @@ services:
             - A2B=true
             - A2B_DISABLE_LOG=false
             - CRA2B=2h
-        cap_add:
-            - NET_ADMIN
-        volumes:
-            - /pwd/Downloads/aria2/config:/config
-            - /pwd/Downloads/aria2/downloads:/downloads
-            - /lib/modules:/lib/modules
         restart: unless-stopped

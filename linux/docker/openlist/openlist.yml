@@ -2,13 +2,13 @@ services:
     openlist:
         container_name: openlist
         image: openlistteam/openlist:latest
+        network_mode: bridge
         ports:
             - 5244:5244
-        network_mode: bridge
+        volumes:
+            - ./openlist:/opt/openlist/data
+        user: 0:0
         environment:
             - UMASK=022
             - TZ=Asia/Shanghai
-        user: 1000:1000
-        volumes:
-            - /opt/openlist/data:/opt/openlist/data
         restart: unless-stopped
