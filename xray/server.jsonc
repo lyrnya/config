@@ -79,7 +79,7 @@
                     "mldsa65Seed": "mldsa65Seed"
                 },
                 "rawSettings": {
-                    "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Caddy SNI 分流前真实来源 IP 和端口
+                    "acceptProxyProtocol": true //开启 PROXY protocol 接收，接收 Nginx SNI 分流前真实来源 IP 和端口
                 }
             },
             "sniffing": {
@@ -114,6 +114,9 @@
                         "xPaddingPlacement": "queryInHeader", //可选 queryInHeader, cookie, header, query
                         "xPaddingHeader": "X-Cache", //xPaddingPlacement 为 header 或 queryInHeader 时才保留此行，填写合理的字符串
                         "xPaddingKey": "_dc" //根据上面的选择，填写合理的字符串
+                        // "xmux": {
+                        //     "maxConcurrency": "16-32"
+                        // }
                     }
                 }
             },
